@@ -1,3 +1,9 @@
+button {
+    display: block;
+    margin: 1rem auto 0;
+    width: 5rem;
+}
+
 .container {
     display: grid;
     height: 98vh;
