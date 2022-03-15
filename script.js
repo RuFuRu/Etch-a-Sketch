@@ -15,7 +15,8 @@ for(let i = 0; i < 256; i++) {
     container.appendChild(squareDiv);
 }
 
-const newSquareDiv = document.querySelectorAll('.square-div');
+let newSquareDiv;
+newSquareDiv = document.querySelectorAll('.square-div');
 console.log(newSquareDiv)
 
 let count = 1;
@@ -45,6 +46,12 @@ button.addEventListener('click', clickAButton);
 
 function clickAButton() {
     let howManySquares = parseInt(prompt('How much squares would you like?'));
+    
+    if(howManySquares > 86) {
+        alert("That's too much squares, write another number");
+        return;
+    }
+
     container.removeAttribute('style', 'grid-template-columns');
     container.innerHTML = '';
     container.setAttribute('style',`grid-template-columns: repeat(${howManySquares}, 1fr);`)
@@ -52,8 +59,11 @@ function clickAButton() {
         squareDiv = document.createElement('div');
         squareDiv.setAttribute('class', 'square-div');
         container.appendChild(squareDiv);
+        newSquareDiv = document.querySelectorAll('.square-div');
     }
 }
+
+
 
 
 
