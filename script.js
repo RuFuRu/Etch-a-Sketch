@@ -1,12 +1,6 @@
 const container = document.querySelector(".container");
-const button = document.querySelector('button');
+const customGridBtn = document.querySelector('.custom-grid');
 let squareDiv;
-
-/*for(let i = 0; i < 256; i++) {
-    squareDiv = document.createElement('div');
-    squareDiv.setAttribute('class', 'square-div');
-    container.appendChild(squareDiv);
-}*/
 
 container.setAttribute('style', "grid-template-columns: repeat(16, 1fr);");
 for(let i = 0; i < 256; i++) {
@@ -17,13 +11,14 @@ for(let i = 0; i < 256; i++) {
 
 let newSquareDiv;
 newSquareDiv = document.querySelectorAll('.square-div');
-console.log(newSquareDiv)
 
+//click counter
 let count = 1;
 let click = () => count++;
 
 container.addEventListener('click', MouseOver);
 container.addEventListener('click', click);
+customGridBtn.addEventListener('click', clickAButton);
 
 function MouseOver() {
     newSquareDiv.forEach(div => {
@@ -41,8 +36,6 @@ function addWhite() {
         this.style.backgroundColor = 'white';
     }
 }
-
-button.addEventListener('click', clickAButton);
 
 function clickAButton() {
     let howManySquares = parseInt(prompt('How much squares would you like?'));
