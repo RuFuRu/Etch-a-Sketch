@@ -1,5 +1,7 @@
 const container = document.querySelector(".container");
 const customGridBtn = document.querySelector('.custom-grid');
+const grid32 = document.querySelector('.thirty-two');
+const grid48 = document.querySelector('.fourty-eight');
 let squareDiv;
 
 container.setAttribute('style', "grid-template-columns: repeat(16, 1fr);");
