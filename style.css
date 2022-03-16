@@ -16,6 +16,7 @@ body {
 h2 {
     font-size: 4rem;
     margin: 0;
+    margin-top: 2rem;
 }
 
 p {
@@ -23,30 +24,42 @@ p {
     text-align: center;
 }
 
+p:first-of-type {
+    margin-top: 2rem;
+}
+
 .button-container {
     display: flex;
     justify-content: space-around;
+    margin-top: 3rem;
 
 }
 
 button {
     display: block;
-    width: 5rem;
+    width: 6rem;
+    border-radius: 25%;
+    border: 2px solid rgb(70, 70, 70);
+    background-color: transparent;
+    font-size: 0.9rem;
+    cursor: pointer;
 }
 
 .site-container {
     display: flex;
     justify-content: center;
-    gap: 5rem;
+    gap: 7rem;
     height: 60vh;
 }
 
 .container {
     display: grid;
     width: 450px;
-    height: 100%;
+    height: 80%;
     grid-auto-rows: auto;
-    border: 1px solid black;
+    border: 5px solid rgb(94, 93, 93);
+    border-radius: 2%;
+    background-color: hsl(0, 2%, 72%);
 }
 
 .square-div {
