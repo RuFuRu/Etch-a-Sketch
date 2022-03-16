@@ -21,6 +21,8 @@ let click = () => count++;
 container.addEventListener('click', MouseOver);
 container.addEventListener('click', click);
 customGridBtn.addEventListener('click', clickAButton);
+grid32.addEventListener('click', grid32Init);
+grid48.addEventListener('click', grid48Init);
 
 function MouseOver() {
     newSquareDiv.forEach(div => {
@@ -58,9 +60,29 @@ function clickAButton() {
     }
 }
 
+function grid32Init() {
+    container.removeAttribute('style', 'grid-template-columns');
+    container.innerHTML = '';
+    container.setAttribute('style',`grid-template-columns: repeat(32, 1fr);`);
+    for(let i = 0; i < 1024; i++) {
+        squareDiv = document.createElement('div');
+        squareDiv.setAttribute('class', 'square-div');
+        container.appendChild(squareDiv);
+        newSquareDiv = document.querySelectorAll('.square-div');
+    }
+}
 
-
-
+function grid48Init() {
+    container.removeAttribute('style', 'grid-template-columns');
+    container.innerHTML = '';
+    container.setAttribute('style',`grid-template-columns: repeat(48, 1fr);`);
+    for(let i = 0; i < 2304; i++) {
+        squareDiv = document.createElement('div');
+        squareDiv.setAttribute('class', 'square-div');
+        container.appendChild(squareDiv);
+        newSquareDiv = document.querySelectorAll('.square-div');
+    }
+}
 
 
 
