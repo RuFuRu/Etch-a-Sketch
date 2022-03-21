@@ -50,7 +50,7 @@ function clickAButton() {
     }
 
     container.removeAttribute('style', 'grid-template-columns');
-    container.innerHTML = '';
+    container.textContent = '';
     container.setAttribute('style',`grid-template-columns: repeat(${howManySquares}, 1fr);`)
     for(let i = 0; i < howManySquares**2; i++) {
         squareDiv = document.createElement('div');
@@ -62,7 +62,7 @@ function clickAButton() {
 
 function grid32Init() {
     container.removeAttribute('style', 'grid-template-columns');
-    container.innerHTML = '';
+    container.textContent = '';
     container.setAttribute('style',`grid-template-columns: repeat(32, 1fr);`);
     for(let i = 0; i < 1024; i++) {
         squareDiv = document.createElement('div');
@@ -74,7 +74,7 @@ function grid32Init() {
 
 function grid48Init() {
     container.removeAttribute('style', 'grid-template-columns');
-    container.innerHTML = '';
+    container.textContent = '';
     container.setAttribute('style',`grid-template-columns: repeat(48, 1fr);`);
     for(let i = 0; i < 2304; i++) {
         squareDiv = document.createElement('div');
