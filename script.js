@@ -1,7 +1,10 @@
 const container = document.querySelector(".container");
 const customGridBtn = document.querySelector('.custom-grid');
-const grid32 = document.querySelector('.thirty-two');
+const grid8 = document.querySelector('.eight');
+const grid24 = document.querySelector('.twenty-four');
 const grid48 = document.querySelector('.fourty-eight');
+const rezet = document.querySelector('.reset');
+const rainbow = document.querySelector('.rainbow');
 let squareDiv;
 
 container.setAttribute('style', "grid-template-columns: repeat(16, 1fr);");
@@ -17,17 +20,27 @@ newSquareDiv = document.querySelectorAll('.square-div');
 //click counter
 let count = 1;
 let click = () => count++;
+let rainbowCheck = 1;
 
 container.addEventListener('click', MouseOver);
 container.addEventListener('click', click);
 customGridBtn.addEventListener('click', clickAButton);
-grid32.addEventListener('click', grid32Init);
+grid8.addEventListener('click', grid8Init);
+grid24.addEventListener('click',grid24Init);
 grid48.addEventListener('click', grid48Init);
+rezet.addEventListener('click',reset);
+rainbow.addEventListener('click',rainbowCheque);
 
 function MouseOver() {
     newSquareDiv.forEach(div => {
-        div.addEventListener('mouseover', addBlack);
-        div.addEventListener('mouseover', addWhite);
+		if(rainbowCheck % 2 === 0) {
+			div.addEventListener('mouseover', greatRainbow);
+			div.addEventListener('mouseover', addWhite);
+		}
+		if(rainbowCheck % 2 !== 0) {
+			div.addEventListener('mouseover', addBlack);
+			div.addEventListener('mouseover', addWhite);
+		}
     });
 }
 
@@ -41,11 +54,30 @@ function addWhite() {
     }
 }
 
+function greatRainbow() {
+	const colorArr = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+	const arr = [];
+	
+	for(let i = 0; i < 6; i++) {
+		arr.push(colorArr[Math.floor(Math.random() * 16)])
+	}
+	
+	let newArr = arr.join("");
+
+	this.style.backgroundColor = `#${newArr}`;
+}
+
+function rainbowCheque() {
+	const rb = ++rainbowCheck
+	console.log(rb);
+	return rb;
+}
+
 function clickAButton() {
-    let howManySquares = parseInt(prompt('How much squares would you like?'));
+    let howManySquares = parseInt(prompt('How many (x by x) grid squares would you like in your canvas ?'));
     
     if(howManySquares > 86) {
-        alert("That's too much squares, write another number");
+        alert("Too much, it could crash the site");
         return;
     }
 
@@ -60,11 +92,23 @@ function clickAButton() {
     }
 }
 
-function grid32Init() {
+function grid8Init() {
     container.removeAttribute('style', 'grid-template-columns');
     container.textContent = '';
-    container.setAttribute('style',`grid-template-columns: repeat(32, 1fr);`);
-    for(let i = 0; i < 1024; i++) {
+    container.setAttribute('style',`grid-template-columns: repeat(8, 1fr);`);
+    for(let i = 0; i < 64; i++) {
+        squareDiv = document.createElement('div');
+        squareDiv.setAttribute('class', 'square-div');
+        container.appendChild(squareDiv);
+        newSquareDiv = document.querySelectorAll('.square-div');
+    }
+}
+
+function grid24Init() {
+    container.removeAttribute('style', 'grid-template-columns');
+    container.textContent = '';
+    container.setAttribute('style',`grid-template-columns: repeat(24, 1fr);`);
+    for(let i = 0; i < 576; i++) {
         squareDiv = document.createElement('div');
         squareDiv.setAttribute('class', 'square-div');
         container.appendChild(squareDiv);
@@ -73,7 +117,7 @@ function grid32Init() {
 }
 
 function grid48Init() {
-    container.removeAttribute('style', 'grid-template-columns');
+	container.removeAttribute('style', 'grid-template-columns');
     container.textContent = '';
     container.setAttribute('style',`grid-template-columns: repeat(48, 1fr);`);
     for(let i = 0; i < 2304; i++) {
@@ -84,6 +128,9 @@ function grid48Init() {
     }
 }
 
-
-
+function reset() {
+	newSquareDiv.forEach(div => {
+		div.style.backgroundColor = 'white';
+	})
+}
 
