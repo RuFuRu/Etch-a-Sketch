@@ -69,7 +69,6 @@ function greatRainbow() {
 
 function rainbowCheque() {
 	const rb = ++rainbowCheck
-	console.log(rb);
 	return rb;
 }
 
